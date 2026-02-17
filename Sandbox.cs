@@ -10,8 +10,7 @@ namespace IDED_Scripting_202610_P1
     {
         public static void Main(string[] args)
         {
-            // You can use this space to test your code before submitting it.
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("no más listas");
         }
     }
 }
