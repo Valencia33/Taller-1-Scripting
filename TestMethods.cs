@@ -53,18 +53,18 @@
 
         public static bool FindNumberInSortedList(int target, in List<int> list)
         {
-            int n = list.Count;
+            int n = list.Count; //poder usar el for bien
 
             List<int> temp = new List<int>();
 
             for (int i = 0; i < n; i++)
-                temp.Add(list[i]);
+                temp.Add(list[i]); //metiendolos en la lista que voy a maniputlar
 
             for (int i = 0; i < n - 1; i++)
             {
-                for (int j = 0; j < n - i - 1; j++)
+                for (int j = 0; j < n - i - 1; j++) //q no se me salga
                 {
-                    if (temp[j] < temp[j + 1])
+                    if (temp[j] < temp[j + 1]) //si es más chiquito el de la izquierda en tonces cambia el orden, de esa forma eventualmente quedan organizados, y ´por como hace la comparación tambien les da el orde
                     {
                         int aux = temp[j];
                         temp[j] = temp[j + 1];
@@ -75,7 +75,8 @@
 
             for (int i = 0; i < n; i++)
             {
-                if (temp[i] == target)
+                if (temp[i] == target) //buscando el target en la lista
+
                     return true;
             }
 
@@ -88,13 +89,13 @@
             Stack<int> work = new Stack<int>(list);
 
             while (work.Count > 0)
-                temp.Push(work.Pop());
+                temp.Push(work.Pop()); //gracias a dios no toca devolver una lsita, no mas.
 
             while (temp.Count > 0)
             {
                 int x = temp.Pop();
                 if (IsPrime(x))
-                    return x;
+                    return x; //acaba apenas sauqe el primer primo
             }
             return 0;
         }
@@ -125,7 +126,7 @@
             Stack<int> copy = new Stack<int>();
 
             while (temp1.Count > 0)
-                copy.Push(temp1.Pop());
+                copy.Push(temp1.Pop()); //quita de una pone en la otra
 
             bool removed = false;
             Stack<int> temp2 = new Stack<int>();
@@ -135,16 +136,16 @@
             {
                 int x = copy.Pop();
 
-                if (!removed && IsPrime(x))
+                if (!removed && IsPrime(x))//va por cada numero y si es primo pone removed en false
                     removed = true;
                 else
-                    temp2.Push(x);
+                    temp2.Push(x); //vuelve a armar la lista en otro temp
             }
 
             Stack<int> result = new Stack<int>();
 
             while (temp2.Count > 0)
-                result.Push(temp2.Pop());
+                result.Push(temp2.Pop()); //saca de temp y mete en result, para que quede con su orden original
 
             return result;
         }
@@ -155,12 +156,12 @@
             Queue<int> queue = new Queue<int>();
 
             while (stack.Count > 0)
-                temp.Push(stack.Pop());
+                temp.Push(stack.Pop());//saca y mete en stack tem
 
             while (temp.Count > 0)
             {
                 int x = temp.Pop();
-                stack.Push(x);   
+                stack.Push(x);   //se las pone a ambas hats que quede vacia
                 queue.Enqueue(x);  
             }
 
